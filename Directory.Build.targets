@@ -26,7 +26,7 @@
     <Copy SourceFiles="@(_Files)" DestinationFiles="@(_Files->'$(OutputPath)%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" Condition="Exists('$(MSBuildThisFileDirectory)files')" />
   </Target>
 
-  <Target Name="CopyUserFiles" AfterTargets="Build" Condition="'$(MSBuildProjectExtension)' == '.csproj'">
+  <Target Name="CopyUserFiles" AfterTargets="CopyFiles" Condition="'$(MSBuildProjectExtension)' == '.csproj'">
     <ItemGroup>
       <_UserFiles Include="$(MSBuildThisFileDirectory)user files\**\*.*" />
     </ItemGroup>
